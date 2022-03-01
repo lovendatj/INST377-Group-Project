@@ -14,6 +14,7 @@ PASSWORD = os.getenv('ISCHOOL_PASSWORD')
 
 DB_NAME = os.getenv('ISCHOOL_DB_NAME')
 
+print(f"[INFO] Connecting to database: {DB_NAME}@{REMOTE_HOST}")
 db_connection_str = f'mysql+pymysql://{USERNAME}:{quote(PASSWORD)}@{REMOTE_HOST}/{DB_NAME}'
 db_connection = create_engine(db_connection_str)
 
