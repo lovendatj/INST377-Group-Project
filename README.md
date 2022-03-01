@@ -21,12 +21,13 @@ docker exec -it mysql bash
 ```
 
 4. To check if mysql initialized correctly, login to mysql using the following command:
-<br>
+
 **Note: Press enter after typing '-p', you will then be asked to enter a password.**
 ```bash
 mysql -u [username] -p
 ```
 5. If all works well, you should be able to access the MySQL database and see all the tables imported correctly using:
+
 ```sql
 USE [DATABASE_NAME];
 SHOW TABLES; 
