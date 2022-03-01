@@ -13,11 +13,11 @@ cd INST377-Group-Project
 
 2. With docker daemon running in the background, start the container using the following command. For this example we will be running the inst-container (the name of the docker container) detached.
 ```bash
-docker-compose up -d -t inst-container
+docker-compose up -d
 ```
 3.  To check if the docker container is running, login with the credentials set in the docker-compose.yml file.
 ```bash
-docker exec -it [docker container name] bash
+docker exec -it mysql bash
 ```
 
 4. To check if mysql initialized correctly, login to mysql using the following command:
@@ -26,4 +26,8 @@ docker exec -it [docker container name] bash
 ```bash
 mysql -u [username] -p
 ```
-5. If all works well, you should be able to access the MySQL database.
+5. If all works well, you should be able to access the MySQL database and see all the tables imported correctly using:
+```sql
+USE [DATABASE_NAME];
+SHOW TABLES; 
+```
