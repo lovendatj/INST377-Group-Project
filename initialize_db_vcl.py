@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv(dotenv_path='.env')
 
 REMOTE_HOST = os.getenv('ISCHOOL_REMOTE_HOST')
-REMOTE_PORT = int(os.getenv('ISCHOOL_PORT'))
+REMOTE_PORT = int(os.getenv('ISCHOOL_REMOTE_PORT'))
 
 USERNAME = os.getenv('ISCHOOL_USERNAME')
 PASSWORD = os.getenv('ISCHOOL_PASSWORD')
@@ -41,10 +41,11 @@ mydb = mysql.connector.connect(
     passwd=PASSWORD,
 )
 mycur = mydb.cursor()
-mycur.execute("CREATE DATABASE IF NOT EXISTS {}".format(DB_NAME))
-mycur.execute("USE {}".format(DB_NAME))
+mycur.exect("DROP DATABASE IF EXISTS %s" % (DB_NAME))  
+# mycur.execute("CREATE DATABASE IF NOT EXISTS {}".format(DB_NAME))
+# mycur.execute("USE {}".format(DB_NAME))
 
-exec_sql_file(mycur, 'inst327_project.sql')
+# exec_sql_file(mycur, 'inst327_project.sql')
 
 mycur.close()
 mydb.close()

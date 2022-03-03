@@ -6,8 +6,9 @@ import os
 from dotenv import load_dotenv
 load_dotenv(dotenv_path='.env')
 
+
 REMOTE_HOST = os.getenv('ISCHOOL_REMOTE_HOST')
-REMOTE_PORT = int(os.getenv('ISCHOOL_PORT'))
+REMOTE_PORT = int(os.getenv('ISCHOOL_REMOTE_PORT'))
 
 USERNAME = os.getenv('ISCHOOL_USERNAME')
 PASSWORD = os.getenv('ISCHOOL_PASSWORD')
