@@ -1,11 +1,11 @@
 import express from 'express';
-import db from './database';
-import apiRoutes from './routes/api';
+import db from './database/initializeDB.js';
+import apiRoutes from './routes/apiRoutes.js';
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
-const staticFolder = __dirname + '/public';
+const staticFolder = 'client';
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -16,9 +16,8 @@ app.use('/api', apiRoutes);
 
 const bootServer = async () => {
     try {
-        await db.sync();
         app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
+            console.log(`Server is running on port ${PORT}`);
         });
     } catch (error) {
         console.log(error);
