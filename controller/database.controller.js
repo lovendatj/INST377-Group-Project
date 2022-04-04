@@ -1,16 +1,6 @@
 const db = require('../services/database.service');
 
-const getAllPrograms = async (req, res, next) => {
-    try{
-        const result = await db.getProgram();
-        res.status(200).json(result);
-    }
-    catch(err){
-        console.log(err);
-        res.status(500).json(err);
-    }
-}
-
+// Example
 const getCustomResults = async (req, res, next) => {
     try{
         const result = await db.getCustomResults();
@@ -22,6 +12,21 @@ const getCustomResults = async (req, res, next) => {
     }
 }
 
+const getAllTables = async (req, res, next) => {
+    try{
+        const result = await db.getAllTables();
+        res.status(200).json({
+            results: result
+        });
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
+
 module.exports = {
-    getAllPrograms,
+    getAllTables
+    // <function name>
+    // getCustomResults
 };

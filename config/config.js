@@ -10,8 +10,8 @@
 
 
 const db = {    
-    username: 'student',
-    password: 'INST377@UMD',
+    username: 'ubuntu',
+    password: 'Veracrypt@12!',
     database: 'group4_spotify',
     host: '174.129.198.86',
     port: 3306,

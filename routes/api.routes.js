@@ -9,8 +9,9 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/programs', controller.getAllPrograms);
+// router.get('/<your end point>', controller.getCustomResults);
 
+router.get('/all', controller.getAllTables);
 
 
 module.exports = router;
