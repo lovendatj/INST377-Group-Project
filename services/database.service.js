@@ -17,18 +17,15 @@ const connection = mysql.createConnection({
 // Note: Be sure to connect to the database before running this example
 const query = async(sql, params) => {
     return new Promise((resolve, reject) => {
-        try {
-            connection.connect();
-            connection.query(sql, params, (err, results, fields) => {     
-                resolve(results);
-            });
-        }
-        catch (err) {
-            reject(err);
-        }
-        finally {
+        connection.connect();
+        connection.query(sql, params, (err, rows) => {
+            if (err) {
+                connection.end();
+                return reject(err);
+            }
             connection.end();
-        }
+            resolve(rows);
+        });
     });
 }    
 
@@ -36,13 +33,18 @@ const query = async(sql, params) => {
 // Params: Can pass request params to the query
 // Note: Be sure to connect to the database before running this example
 //       and disconnect after running it. Export function at bottom.
-const getAllCustomResults = async() => {
-    const result = await query('SELECT * FROM `TABLE_NAME`', []);
+const getMusic = async(id=null) => {
+    if (id !== null) {
+        console.log(id);
+        const result = await query('SELECT * FROM tracks WHERE track_id = ?', [id]);
+        return result;
+    } 
+    const result = await query('SELECT * FROM tracks', []);
     return result;
 }
 
 const getCustomResult = async() => {
-    const result = await query('SELECT * FROM `TABLE_NAME` WHERE custom_id = $id', [id]);
+    const result = await query('SELECT * FROM `TABLE_NAME` WHERE custom_id = ?', [id]);
     return result;
 };
 
@@ -58,5 +60,6 @@ const getAllTables = async() => {
 //       unexpected errors from being thrown.
 module.exports = {
     // <function name>
-    getAllTables
+    getMusic,
+    getAllTables // Shows all tables in the database
 };

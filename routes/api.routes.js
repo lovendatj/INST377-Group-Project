@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
 // router.get('/<your end point>', controller.getCustomResults);
 
-router.get('/all', controller.getAllTables);
+router.get('/music', controller.getMusic);
 
 
 module.exports = router;
