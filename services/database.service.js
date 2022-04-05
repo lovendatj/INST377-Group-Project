@@ -43,12 +43,13 @@ const getMusic = async(id=null) => {
     return result;
 }
 
+// Example of a custom query with params
 const getCustomResult = async() => {
     const result = await query('SELECT * FROM `TABLE_NAME` WHERE custom_id = ?', [id]);
     return result;
 };
 
-
+// Example of a custom query that shows all tables
 const getAllTables = async() => {
     const result = await query('SHOW TABLES', []);
     return result;
