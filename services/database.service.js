@@ -35,20 +35,19 @@ const query = async(sql, params) => {
 //       and disconnect after running it. Export function at bottom.
 const getMusic = async(id=null) => {
     if (id !== null) {
-        console.log(id);
         const result = await query('SELECT * FROM tracks WHERE track_id = ?', [id]);
         return result;
     } 
     const result = await query('SELECT * FROM tracks', []);
     return result;
 }
-
+// This is an example request
 const getCustomResult = async() => {
     const result = await query('SELECT * FROM `TABLE_NAME` WHERE custom_id = ?', [id]);
     return result;
 };
 
-
+// This request is an example of a custom query that retrieves all tables
 const getAllTables = async() => {
     const result = await query('SHOW TABLES', []);
     return result;
