@@ -73,5 +73,8 @@ const getAllTables = async() => {
 module.exports = {
     // <function name>
     getMusic,
+    addMusic,
+    deleteMusic,
+    updateMusic,
     getAllTables // Shows all tables in the database
 };
