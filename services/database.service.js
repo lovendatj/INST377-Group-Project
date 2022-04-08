@@ -9,6 +9,7 @@ const connection = mysql.createConnection({
     database: config.database
 
 });
+connection.connect();
 
 // Default async query, 
 // Params:
@@ -17,13 +18,11 @@ const connection = mysql.createConnection({
 // Note: Be sure to connect to the database before running this example
 const query = async(sql, params) => {
     return new Promise((resolve, reject) => {
-        connection.connect();
         connection.query(sql, params, (err, rows) => {
             if (err) {
                 connection.end();
                 return reject(err);
             }
-            connection.end();
             resolve(rows);
         });
     });
