@@ -41,6 +41,11 @@ const getMusic = async(id=null) => {
     return result;
 }
 
+const addMusic = async(body) => {
+    const result = await query('INSERT INTO tracks SET ?', [body]);
+    return result;
+}
+
 // Example of a custom query with params
 const getCustomResult = async() => {
     const result = await query('SELECT * FROM `TABLE_NAME` WHERE custom_id = ?', [id]);
@@ -60,5 +65,6 @@ const getAllTables = async() => {
 module.exports = {
     // <function name>
     getMusic,
+    addMusic,
     getAllTables // Shows all tables in the database
 };
