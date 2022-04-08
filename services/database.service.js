@@ -33,26 +33,33 @@ const query = async(sql, params) => {
 // Note: Be sure to connect to the database before running this example
 //       and disconnect after running it. Export function at bottom.
 const getMusic = async(id=null) => {
-    if (id != null) {
+    if (id !== null) {
         const result = await query('SELECT * FROM tracks WHERE track_id = ?', [id]);
         return result;
     } 
     const result = await query('SELECT * FROM tracks', []);
     return result;
 }
-
 const addMusic = async(body) => {
     const result = await query('INSERT INTO tracks SET ?', [body]);
     return result;
 }
+const deleteMusic = async(id) => {
+    const result = await query('DELETE FROM tracks WHERE track_id = ?', [id]);
+    return result;
+}
+const updateMusic = async(id, body) => {
+    const result = await query('UPDATE tracks SET ? WHERE track_id = ?', [body, id]);
+    return result;
+}
 
-// Example of a custom query with params
+// This is an example request
 const getCustomResult = async() => {
     const result = await query('SELECT * FROM `TABLE_NAME` WHERE custom_id = ?', [id]);
     return result;
 };
 
-// Example of a custom query that shows all tables
+// This request is an example of a custom query that retrieves all tables
 const getAllTables = async() => {
     const result = await query('SHOW TABLES', []);
     return result;
@@ -66,5 +73,7 @@ module.exports = {
     // <function name>
     getMusic,
     addMusic,
+    deleteMusic,
+    updateMusic,
     getAllTables // Shows all tables in the database
 };

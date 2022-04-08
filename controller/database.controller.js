@@ -12,6 +12,20 @@ const getCustomResults = async (req, res, next) => {
     }
 }
 
+const getMusic = async (req, res, next) => {
+    try{
+        const result = await db.getMusic(
+            req.params.id
+        );
+        res.status(200).json({
+            results: result
+        });
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
 const getAllMusic = async (req, res, next) => {
     try{
         const result = await db.getMusic();
@@ -24,9 +38,11 @@ const getAllMusic = async (req, res, next) => {
         res.status(500).json(err);
     }
 }
-const getMusic = async (req, res, next) => {
+const addMusic = async (req, res, next) => {
     try{
-        const result = await db.getMusic(req.params.id);
+        const result = await db.addMusic(
+            {...req.body}
+        );
         res.status(200).json({
             results: result
         });
@@ -37,9 +53,25 @@ const getMusic = async (req, res, next) => {
     }
 }
 
-const addMusic = async (req, res, next) => {
+const updateMusic = async (req, res, next) => {
     try{
-        const result = await db.addMusic(req.body);
+        const result = await db.updateMusic(
+            {body: req.body, id: req.params.id}
+        );
+        res.status(200).json({
+            results: result
+        });
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
+const deleteMusic = async (req, res, next) => {
+    try{
+        const result = await db.deleteMusic(
+            req.params.id
+        );
         res.status(200).json({
             results: result
         });
@@ -66,8 +98,11 @@ const getAllTables = async (req, res, next) => {
 module.exports = {
     getMusic,
     getAllMusic,
+    updateMusic,
+    deleteMusic,
     addMusic,
-    getAllTables
+    getAllTables,
+
     // <function name>
     // getCustomResults
 };

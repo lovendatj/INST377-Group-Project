@@ -11,10 +11,13 @@ router.get('/', (req, res) => {
 
 // router.get('/<your end point>', controller.getCustomResults);
 
-/* John's Routes */
 router.get('/music', controller.getAllMusic);
 router.get('/music/:id', controller.getMusic);
 router.post('/music', controller.addMusic);
+router.put('/music/:id', controller.updateMusic);
+router.delete('/music/:id', controller.deleteMusic);
+
+
 
 
 module.exports = router;
