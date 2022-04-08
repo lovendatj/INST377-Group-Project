@@ -14,9 +14,8 @@ const getCustomResults = async (req, res, next) => {
 
 const getMusic = async (req, res, next) => {
     try{
-        console.log(req.query);
         const result = await db.getMusic(
-            req.query.id
+            req.params.id
         );
         res.status(200).json({
             results: result
