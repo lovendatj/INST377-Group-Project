@@ -12,6 +12,12 @@ router.get('/', (req, res) => {
 // router.get('/<your end point>', controller.getCustomResults);
 
 router.get('/music', controller.getMusic);
+router.get('/music/:id', controller.getMusic);
+router.post('/music', controller.addMusic);
+router.put('/music/:id', controller.updateMusic);
+router.delete('/music/:id', controller.deleteMusic);
+
+
 
 
 module.exports = router;

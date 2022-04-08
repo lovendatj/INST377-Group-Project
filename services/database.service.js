@@ -41,6 +41,19 @@ const getMusic = async(id=null) => {
     const result = await query('SELECT * FROM tracks', []);
     return result;
 }
+const addMusic = async(body) => {
+    const result = await query('INSERT INTO tracks SET ?', [body]);
+    return result;
+}
+const deleteMusic = async(id) => {
+    const result = await query('DELETE FROM tracks WHERE track_id = ?', [id]);
+    return result;
+}
+const updateMusic = async(id, body) => {
+    const result = await query('UPDATE tracks SET ? WHERE track_id = ?', [body, id]);
+    return result;
+}
+
 // This is an example request
 const getCustomResult = async() => {
     const result = await query('SELECT * FROM `TABLE_NAME` WHERE custom_id = ?', [id]);
