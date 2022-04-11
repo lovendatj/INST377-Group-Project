@@ -95,6 +95,19 @@ const getAllTables = async (req, res, next) => {
     }
 }
 
+const getAllSongList = async (req, res, next) => {
+    try{
+        const result = await db.getSongList();
+        res.status(200).json({
+            results: result
+        });
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
+
 module.exports = {
     getMusic,
     getAllMusic,
@@ -102,6 +115,7 @@ module.exports = {
     deleteMusic,
     addMusic,
     getAllTables,
+    getAllSongList,
 
     // <function name>
     // getCustomResults

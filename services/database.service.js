@@ -52,6 +52,14 @@ const updateMusic = async(id, body) => {
     const result = await query('UPDATE tracks SET ? WHERE track_id = ?', [body, id]);
     return result;
 }
+const getSongList = async(id=null) => {
+    if (id !== null) {
+        const result = await query('SELECT tr.track_name, ar.name FROM tracks AS tr JOIN music AS mu ON tr.track_id = mu.track_id JOIN artist AS ar ON mu.artist_id = ar.artist_id WHERE tr.track_name = ?', [id]);
+        return result;
+    } 
+    const result = await query('SELECT tr.track_name , ar.name FROM tracks AS tr JOIN music AS mu ON tr.track_id = mu.track_id JOIN artist AS ar ON mu.artist_id = ar.artist_id', []);
+    return result;
+}
 
 // This is an example request
 const getCustomResult = async() => {
@@ -75,5 +83,6 @@ module.exports = {
     addMusic,
     deleteMusic,
     updateMusic,
-    getAllTables // Shows all tables in the database
+    getAllTables,
+    getSongList // Shows all tables in the database
 };
