@@ -53,6 +53,15 @@ const updateMusic = async(id, body) => {
     return result;
 }
 
+const getDisplaySong = async(id=null) => {
+    if (id !== null) {
+        const result = await query('SELECT tr.track_name, pll.name, ou.company_name FROM tracks AS tr JOIN music AS mu ON tr.track_id = mu.track_id JOIN playlist AS pl ON mu.music_id = pl.music_id JOIN playlist_ledger AS pll ON pl.p_list_id = pll.playlist_track_id JOIN station AS st ON pll.playlist_track_id = st.playlist_ledg_id JOIN outlet AS ou ON st.outlet_id = ou.outlet_id WHERE tr.track_name = ?', [id]);
+        return result;
+    }
+    const result = await query('SELECT tr.track_name, pll.name, ou.company_name FROM tracks AS tr JOIN music AS mu ON tr.track_id = mu.track_id JOIN playlist AS pl ON mu.music_id = pl.music_id JOIN playlist_ledger AS pll ON pl.p_list_id = pll.playlist_track_id JOIN station AS st ON pll.playlist_track_id = st.playlist_ledg_id JOIN outlet AS ou ON st.outlet_id = ou.outlet_id', []);
+    return result;
+}
+
 // This is an example request
 const getCustomResult = async() => {
     const result = await query('SELECT * FROM `TABLE_NAME` WHERE custom_id = ?', [id]);
@@ -75,5 +84,6 @@ module.exports = {
     addMusic,
     deleteMusic,
     updateMusic,
-    getAllTables // Shows all tables in the database
+    getAllTables, // Shows all tables in the database
+    getDisplaySong
 };
