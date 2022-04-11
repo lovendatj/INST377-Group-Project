@@ -1,32 +1,20 @@
-import express from 'express';
-import sequelize from 'sequelize';
-import db from '../database/initializeDB.js';
-
-
-
-<<<<<<< HEAD
-// router.get('/<your end point>', controller.getCustomResults);
-=======
+const express = require('express');
 const router = express.Router();
->>>>>>> parent of 94155ac (.)
+const controller = require('../controller/database.controller');
 
-router.get('        /', (req, res) => { 
-    res.send('Hello World');            
+
+router.get('/', (req, res) => {
+    res.status(200).json({
+        message: 'Welcome to the API'
+    });
 });
 
+// router.get('/<your end point>', controller.getCustomResults);
 
-router.get('/routes', (req, res) => {
-    try{
-        const user = await db.default.findAll({  
-                id: req.params.user_id
-            }
-        })
-        res.json(default);
+router.get('/music', controller.getAllMusic);
+router.get('/music/:id', controller.getMusic);
+router.post('/music', controller.addMusic);
+router.put('/music/:id', controller.updateMusic);
+router.delete('/music/:id', controller.deleteMusic);
 
-    } catch (err){
-        console.log(err)
-        res.error('Server Error');
-    }
-});
-
-export default router;
+module.exports = router;
