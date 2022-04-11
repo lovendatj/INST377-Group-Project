@@ -1,6 +1,5 @@
-import express from 'express';
-import db from './database/initializeDB.js';
-import apiRoutes from './routes/apiRoutes.js';
+const express = require('express');
+const apiRoutes = require('./routes/api.routes');
 
 const app = express();
 
