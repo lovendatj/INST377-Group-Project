@@ -95,9 +95,24 @@ const getAllTables = async (req, res, next) => {
     }
 }
 
+
+const getAllSongList = async (req, res, next) => {
+    try{
+        const result = await db.getSongList();
+        res.status(200).json({
+            results: result
+        });
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
+
 const getAllSongDisplay = async (req, res, next) => {
     try{
         const result = await db.getDisplaySong();
+
         res.status(200).json({
             results: result
         });
@@ -123,6 +138,7 @@ const getSongDisplay = async (req, res, next) => {
     }
 }
 
+
 module.exports = {
     getMusic,
     getAllMusic,
@@ -130,8 +146,10 @@ module.exports = {
     deleteMusic,
     addMusic,
     getAllTables,
+    getAllSongList,
     getAllSongDisplay,
-    getSongDisplay
+    getSongDisplay,
+
 
     // <function name>
     // getCustomResults
