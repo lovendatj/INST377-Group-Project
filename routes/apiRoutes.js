@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/routes', controller.getCustomResults);
+// router.get('/<your end point>', controller.getCustomResults);
 
 router.get('/music', controller.getAllMusic);
 router.get('/music/:id', controller.getMusic);
