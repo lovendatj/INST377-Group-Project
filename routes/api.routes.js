@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
     });
 });
 
+
 // router.get('/<your end point>', controller.getCustomResults);
 
 router.get('/music', controller.getAllMusic);
@@ -17,7 +18,8 @@ router.post('/music', controller.addMusic);
 router.put('/music/:id', controller.updateMusic);
 router.delete('/music/:id', controller.deleteMusic);
 
-
+router.get('/singleSongDisplay', controller.getAllSongDisplay);
+router.get('/singleSongDisplay/:id', controller.getSongDisplay);
 
 
 module.exports = router;
