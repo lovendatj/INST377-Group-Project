@@ -95,7 +95,53 @@ const getAllTables = async (req, res, next) => {
     }
 }
 
+<<<<<<< HEAD
 const getAll
+=======
+
+const getAllSongList = async (req, res, next) => {
+    try{
+        const result = await db.getSongList();
+        res.status(200).json({
+            results: result
+        });
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
+
+const getAllSongDisplay = async (req, res, next) => {
+    try{
+        const result = await db.getDisplaySong();
+
+        res.status(200).json({
+            results: result
+        });
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
+
+const getSongDisplay = async (req, res, next) => {
+    try {
+        const result = await db.getDisplaySong(
+            req.params.id
+        );
+        res.status(200).json({
+            results: result
+        });
+    }
+    catch(err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
+
+>>>>>>> origin/main
 
 module.exports = {
     getMusic,
@@ -104,6 +150,10 @@ module.exports = {
     deleteMusic,
     addMusic,
     getAllTables,
+    getAllSongList,
+    getAllSongDisplay,
+    getSongDisplay,
+
 
     // <function name>
     // getCustomResults
