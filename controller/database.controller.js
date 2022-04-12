@@ -95,6 +95,8 @@ const getAllTables = async (req, res, next) => {
     }
 }
 
+const getAll
+
 module.exports = {
     getMusic,
     getAllMusic,
