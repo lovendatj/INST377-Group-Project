@@ -72,10 +72,10 @@ const getDisplaySong = async(id=null) => {
 
 const getGenreList = async(id=null) => {
     if (id!== null) {
-        const result = await query('SELECT tr.track_name, al.genre FROM tracks AS tr JOIN album AS al ON tr.published_date = al.publish_date where tr.track_name = ?', [id]);
+        const result = await query('SELECT tr.track_id, tr.track_name, al.genre FROM tracks AS tr JOIN album AS al ON tr.published_date = al.publish_date WHERE track_id = ?', [id]);
         return result;
     }
-    const result = await query('SELECT tr.track_name, al.genre FROM tracks AS tr JOIN album AS al ON tr.published_date = al.publish_date', []);
+    const result = await query('SELECT tr.track_id, tr.track_name, al.genre FROM tracks AS tr JOIN album AS al ON tr.published_date = al.publish_date', []);
     return result;
 }
 
