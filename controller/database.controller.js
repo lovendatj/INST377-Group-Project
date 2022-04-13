@@ -95,9 +95,6 @@ const getAllTables = async (req, res, next) => {
     }
 }
 
-<<<<<<< HEAD
-const getAll
-=======
 
 const getAllSongList = async (req, res, next) => {
     try{
@@ -141,8 +138,18 @@ const getSongDisplay = async (req, res, next) => {
     }
 }
 
->>>>>>> origin/main
-
+const getGenreList = async (req, res, next) => {
+    try{
+        const result = await db.getGenreList();
+        res.status(200).json({
+            results: result
+        });
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
 module.exports = {
     getMusic,
     getAllMusic,
@@ -153,6 +160,7 @@ module.exports = {
     getAllSongList,
     getAllSongDisplay,
     getSongDisplay,
+    getGenreList
 
 
     // <function name>

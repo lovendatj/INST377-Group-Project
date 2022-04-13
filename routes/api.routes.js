@@ -20,8 +20,6 @@ router.post('/music', controller.addMusic);
 router.put('/music/:id', controller.updateMusic);
 router.delete('/music/:id', controller.deleteMusic);
 
-<<<<<<< HEAD:routes/apiRoutes.js
-=======
 
 router.get('/songList', controller.getAllSongList);
 router.get('/songList/:id', controller.getAllSongList);
@@ -29,7 +27,7 @@ router.get('/songList/:id', controller.getAllSongList);
 router.get('/singleSongDisplay', controller.getAllSongDisplay);
 router.get('/singleSongDisplay/:id', controller.getSongDisplay);
 
+router.get('/genreList', controller.getGenreList);
+router.get('/genreList/:id', controller.getGenreList);
 
-
->>>>>>> origin/main:routes/api.routes.js
 module.exports = router;

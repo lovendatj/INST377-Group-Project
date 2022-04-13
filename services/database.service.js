@@ -70,11 +70,20 @@ const getDisplaySong = async(id=null) => {
     return result;
 }
 
+const getGenreList = async(id=null) => {
+    if (id!== null) {
+        const result = await query('SELECT tr.track_name, al.genre FROM tracks AS tr JOIN album AS al ON tr.published_date = al.publish_date where tr.track_name = ?', [id]);
+        return result;
+    }
+    const result = await query('SELECT tr.track_name, al.genre FROM tracks AS tr JOIN album AS al ON tr.published_date = al.publish_date', []);
+    return result;
+}
+
 // This is an example request
 const getCustomResult = async() => {
     const result = await query('SELECT * FROM `TABLE_NAME` WHERE custom_id = ?', [id]);
     return result;
-};
+};  
 
 // This request is an example of a custom query that retrieves all tables
 const getAllTables = async() => {
@@ -95,4 +104,5 @@ module.exports = {
     getAllTables,
     getSongList, 
     getDisplaySong,
+    getGenreList
 };
