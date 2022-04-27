@@ -27,6 +27,7 @@ router.get('/songList/:id', controller.getAllSongList);
 router.get('/singleSongDisplay', controller.getAllSongDisplay);
 router.get('/singleSongDisplay/:id', controller.getSongDisplay);
 
-
+router.get('/genreList', controller.getGenreList);
+router.get('/genreList/:id', controller.getGenreList);
 
 module.exports = router;

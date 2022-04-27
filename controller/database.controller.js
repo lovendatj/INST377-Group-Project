@@ -138,7 +138,18 @@ const getSongDisplay = async (req, res, next) => {
     }
 }
 
-
+const getGenreList = async (req, res, next) => {
+    try{
+        const result = await db.getGenreList();
+        res.status(200).json({
+            results: result
+        });
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
 module.exports = {
     getMusic,
     getAllMusic,
@@ -149,6 +160,7 @@ module.exports = {
     getAllSongList,
     getAllSongDisplay,
     getSongDisplay,
+    getGenreList
 
 
     // <function name>
